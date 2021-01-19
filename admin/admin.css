@@ -1,0 +1,19 @@
+.menu_login{
+    width:30%;
+}
+
+.menu_login h1{
+    font-size:8em;
+    text-align:center;
+    color:#007bff;
+}
+
+.menu_login button{
+    margin:auto;
+}
+
+.menu_login .small{
+    font-size:0.8em;
+    text-align: center;
+    color:grey;
+}
