@@ -957,64 +957,142 @@ var accueilProjet = {
     },
     template:`
     <div>
-        <h2>La section Pages</h2>
+        <h2>Contenu</h2>
 
-        <p>la section Pages est sans doute là où vous allez passer le plus de temps.<br/>
-        Elle contient toutes les fonctionnalités nécessaires à la gestion au quotidien de votre site, qui sont chacunes expliquées en-dessous.<br>
-        <strong>N'hésitez pas à bien vous les approprier !</strong></p>
+        <p>
+            Vous êtes arrivé dans l'espace qui vous sert à créer, modifier ou supprimer le contenu de votre site. <br>
+            <br>
+            <strong style="color: blue">Pour bien commencer :</strong>
+        </p>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(1)">Ajouter ou modifier une page</button>
-            
-            <div id="explics_1" class="mb-sm-3" style="display:none">
-                <p>
-                    <em>Explications en attente...</em>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(0)">Une rapide introduction</button>
+
+            <div id="explics_0" class="mb-sm-3" style="display:none">
+                <p class="mb-2 pb-2">
+                    Yapo est là pour vous permettre de créer et gérer simplement et rapidement le contenu de votre site.<br> 
+                    <br>
+                    Ce contenu peut se diviser en cinq:<br>
+                    <ul>
+                        <li>Vos <strong>pages</strong> qui seront rangées dans des <strong>catégories</strong></li>
+                        <li>Votre <strong>page d'accueil</strong></li>
+                        <li>Vos <strong>actualités</strong></li>
+                        <li>Votre <strong>à propos</strong></li>
+                    </ul>
+                    <br>
+                    Vous remarquerez que chaque mot en gras correspond à un des panneaux du menu de gauche. C'est voulu et c'est fait pour que vous ne vous occupiez que de ce qui vous intéresse !<br> 
+                    Nous vous conseillons tout de même, si c'est la première fois que vous vous gérez un site, ou si vous vous sentez perdu, de lire les explications détaillées pour chaque panneau ci-dessous. Sinon, vous pouvez vous jeter dans le bain et voir sous vos yeux ébahis votre site web se remplir et émerveiller vos amis.<br>
+                    <br>
+                    En cas de problème, pour une aide personnalisée, ou pour nous adresser un message de félicitations (nous sommes très sensibles à la flatterie), vous pouvez contacter le webmaster à l'adresse suivante:  <strong>yapo(at)collectif8h30.fr</strong>
+                    <br>
+                    Bonne découverte !
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_prjts')">Ajouter ou modifier une page</button>
             </div>
         </div>
         
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(2)">Ajouter ou modifier une catégorie</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(2)">Mes catégories</button>
 
             <div id="explics_2" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    Première étape dans la gestion de votre contenu: les catégories.<br>
+                    <br>
+                    Elles servent à <em>organiser votre site</em>, et donc comment vos visiteurs vont le parcourir.<br>
+                    Vous pouvez en créer de nouvelles à tout moment. Elles peuvent s’appeler n’importe comment : vous pouvez créer des catégories <em>“Peintures”</em> et <em>“Dessins”</em> pour ranger votre site par pratique, <em>“2019”</em> et <em>“2018”</em> si vous souhaitez organiser vos projets chronologiquement, ou encore <em>“Choucroute Cosmique”</em> et <em>“Hypertrophie Existentielle”</em> si ce sont les noms de vos séries !<br>
+                    <strong>Si vous ne souhaitez pas séparer vos projets dans différentes catégories, vous pouvez aussi en créer une générale appelée <em>“Travaux”</em>, ou <em>“Oeuvres”</em>, et tout y ranger.</strong>
+                    <br>
+                    <br>
+                    Vos catégories sont personnalisables, vous décidez de leur nom, du type et de l'ordre des <strong>champs</strong> qui s'y trouve. <em>Kessadire?</em><br>
+                    <br>
+                    Voyons les choses comme ça : lorsque vous créez une page, Yapo vous pose des questions, et les réponses que vous leur apportez est le contenu que le visiteur verra sur votre site.<br>
+                    Yapo vous propose par défaut une suite de questions correspondant à ce qu'on attend d'une page de portfolio d'artiste, mais vous pouvez à tout moment décider d'ajouter, de modifier ou d'enlever une question. Ces questions sont les fameux <em>champs.</em><br>
+                    Personnaliser les champs de vos catégories revient donc à choisir quelles questions Yapo vous pose et dans quel ordre. Chaque champ à un nom et un type. Le nom est l'intitulé de la question, il n'est là que pour vous simplifier la vie et vous permettre de vous rappeler ce que vous voulez y dire, le type détermine quelle réponse vous pouvez donner.<br>
+                    <br>
+                    <strong>Voici une liste des types de champs possibles</strong>
+                        <ul>
+                            <li><strong>texte court : </strong>un texte... Court. Vous servira en général pour des titres, des dates, ou des mediums</li>
+                            <li><strong>texte long : </strong>une zone de texte dans lequel vous pourrez écrire un commentaire, un résumé, etc. Ces champs sont compilés en markdown, C'est-à-dire que vous pouvez utiliser des raccourics pour mettre des mots en gras, en italique, insérer des liens ou des images, etc.</li>
+                            <li><strong>liste d'infos : </strong>une succession de petites informations courtes, qui seront affichées comme une liste</li>
+                            <li><strong>médias externes : </strong>un champ d'insertion de medias. Concrètement, cela veut dire que vous pouvez y intégrer une vidéo youtube, vimeo, dailymotion, un lecteur bandcamp ou soundcloud. Pour cela, vous devez utiliser la fonction partager/intégrer de ces plate-formes et copier-coller le lien. Seuls ces sites sont autorisés pour des raisons de sécurité. Si vous devez ajouter une autre plate-forme, contactez le webmaster à l'adresse yapo(at)collectif8h30.fr</li>
+                            <li><strong>envoi de fichiers : </strong>vous permet d'ajouter des images et des documents pdf à votre site. Pour chaque image ajoutée, vous pouvez choisir de l'afficher ou non sur la page, de l'utiliser comme aperçu de cette page, ou la supprimer.</li>
+                        </ul>
+                    <br>
+                    Vous pouvez à tout moment ajouter un nouveau champ, les modifications seront apportées au modèle par défaut de cette catégorie, et apparaitront lorsque vous créerez une nouvelle page dans cette catégorie.<br>
+                    <br>
+                    Deux choses à retenir pour finir:
+                    <ul>
+                        <li>Conservez toujours au moins une catégorie !<br>
+                        Vous ne pouvez pas créer de nouvelles pages si elles ne sont pas associées à une catégorie.<br></li>
+                        <li><strong>Attention: La suppression d’une catégorie entrainera la suppression de toutes les pages associées et leurs fichiers !</strong></li>
+                    </ul>
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_cats')">Ajouter ou modifier une catégorie</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_cats')">Aller à vos catégories</button>
             </div>
         </div>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(3)">Ajouter ou modifier une actualité</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(1)">Mes pages</button>
             
-            <div id="explics_3" class="mb-sm-3" style="display:none">
+            <div id="explics_1" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    Maintenant qu'au moins une catégorie est créée, vous pouvez créer des pages qui y seront rangées.<br>
+                    <br>
+                    Choisissez une catégorie dans la liste pour faire apparaître toutes les pages qui y sont associées déjà existantes. Un bouton "créer une nouvelle page" est à votre disposition pour... Eh bien, créer une nouvelle page, car nous croyons profondément aux appellations simples et claires.<br>
+                    Lors de la création d'une nouvelle page, le modèle que vous avez défini (la liste des questions, leur nom et leur type) pour la catégorie est utilisé pour vous proposer un formulaire correspondant.<br>
+                    Chaque champ a un comportement différent, mais tous sont pensés pour être les plus clairs et simples possibles. Le champ le plus complexe (parce qu'il propose le plus de fonctionnalités) est le texte long, et ses raccourcis markdown mystérieux. Pour des raisons de place et de clarté nous n'avons pu en inclure une liste exhaustive, mais <a href="https://docs.framasoft.org/fr/grav/markdown.html" target="_blank">ce site</a> les répertorie. N'hésitez pas à vous y plonger si vous souhaiter personnaliser vos textes.<br>
+                    <br>
+                    Les titres des pages sont modifiables à tout moment, mais elles doivent en avoir un. Par défaut, si vous décider de ne pas nommer vos pages, elles s'appelleront <em>Sans titre.</em> Leur contenu est également modifiable à tout moment, et vous pouvez rajouter des champs si vous en avez besoin spécifiquement pour chaque page.<br>
+                    <br>
+                    <strong>En revanche,</strong> vous ne pouvez pas modifier la catégorie dans laquelle une page est rangée une fois la page créée, vous devrez la supprimer et la recréer ailleurs.<br>
+                    <br>
+                    Chacunes de vos pages peut se voir attribuer une image qui servira d'aperçu. Pour cela, commencez par ajouter une image à la page via un champ d'envoi de fichiers, et utilisez l'option <em>Utliser l'image comme aperçu.</em> <strong>Attention : </strong>Si vous souhaitez ensuite supprimer l'image, utilisez d'abord l'option <em>Ne plus utiliser l'image comme aperçu.</em>
+                    <br>
+                    La création de pages est pensée pour être le plus simple possible, pour que vous puissiez passer du temps à penser votre contenu, plutôt que le moyen de le faire exister en ligne. En cas de problème, là encore, contactez le webmaster à l'adresse <strong>yapo(at)collectif8h30.fr</strong>
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_actus')">Ajouter ou modifier une actualité</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_prjts')">Aller à vos pages</button>
             </div>
         </div>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(4)">Modifier votre page d'accueil</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(4)">Mon accueil</button>
 
             <div id="explics_4" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    Votre page d’accueil est votre première vitrine, ce que vos visiteurs verront à leur arrivée sur votre site.<br>
+                    Vous pouvez y écrire du texte, y placer des images ou des medias externes, de la même manière que sur une de vos pages, à la différence que le nombre de champs est ici limité, pour des raisons d'ergonomie.<br>
+                    <br>
+                    N'hésitez pas à mettre souvent à jour cette page ! Cela montrera à vos visiteurs (et au robot google) que votre site est actif.
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_infos')">Modifier votre page d'accueil</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_infos')">Aller à votre accueil</button>
             </div>
         </div>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(5)">Modifier votre page à propos</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(3)">Mes actualités</button>
+            
+            <div id="explics_3" class="mb-sm-3" style="display:none">
+                <p>
+                    La section actualité de votre site est optionnelle.<br>
+                    Par défaut, elle n'apparaîtra pas à vos visiteurs, jusqu'à ce que vous ajoutiez au moins une actualité. Ensuite, elles s'afficheront toutes, par date de création de la plus récente à la plus ancienne, sur votre page <em>Actualités.</em><br>
+                    <br>
+                    <strong>Concrètement,</strong> cela signifique vous pouvez avoir une petite section blog sur votre site, ou chaque billet est comme une page, mais où tous seront affichés au même endroit.<br>
+                    Le panneau <strong>Mes actualités</strong> fonctionne donc exactement comme le panneau <strong>Mes pages.</strong><br>
+                    <br>
+                    Nous ne pouvons que vous encourager à souvent créer des actualités, à utiliser cette fonctionnalité pour que véritablement tenir au courant votre public de vos futurs évènements, de vos travaux, etc. D'autant que dans le public de votre site web se trouve le robot google, et que le robot google aime que vous mettiez souvent à jour vos pages !
+                </p>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_actus')">Aller à vos actualités</button>
+            </div>
+        </div>
+
+        <div class="border-bottom">
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(5)">À propos de moi</button>
 
             <div id="explics_5" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    La page À propos vous sert à vous présenter auprès des visiteurs, vous pouvez y afficher un texte expliquant votre démarche, y mettre des images et/ou des fichiers (comme un dossier d’artiste pdf).<br>
+                    Comme pour le panneau <em>accueil,</em> ce panneau fonctionne comme une création de page, dont le nombre et le type de champs est fixé pour des raisons d'ergonomie.
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('a_propos')">Modifier votre page à propos</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('a_propos')">Aller à votre à propos</button>
             </div>
         </div>
     </div> `
@@ -1040,40 +1118,74 @@ var accueilParams = {
     },
     template:`
     <div>
-        <h2>La section Paramètres</h2>
+        <h2>Paramètres</h2>
 
-        <p><em>Explications en attente</em></p>
+        <p>
+        <em>Vous qui entrez ici...</em> N'ayez pas peur, ce n'est vraiment pas si compliqué !<br>
+        <br>
+        Toutes les informations et réglages des panneaux de la section paramètres ne devraient pas avoir besoin d'être modifiés souvent. Toutefois, si vous le souhaitez ou s'il le faut, vous pouvez y:
+        <ul>
+            <li>Modifier les informations de <strong>votre site</strong></li>
+            <li>Modifier vos informations de <strong>contact</strong></li>
+            <li>Modifier vos <strong>identifiants administrateurs</strong></li>
+        </ul>
+        </p>
         
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(1)">Modifier les coordonnées de votre site</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(1)">Mon site</button>
             
             <div id="explics_1" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    C'est ici que vous pouvez modifier les informations de base de votre site, ainsi que ces étranges, mystérieuses et très utilses choses nommées les balises meta.<br>
+                    <br>
+                    <ul>
+                        <li><strong>Mais d'abord,</strong> le titre de votre site : c'est tout simplement ce qui est affiché en haut du menu de votre site pour un visiteur, ainsi que dans son onglet de navigateur. C'est aussi un élément central dans le référencement de votre site sur google, pour faire en sorte que votre public vous trouve.<br>
+                        Vous pouvez nommer votre site comme vous le voulez, mais nous vous conseillons de choisir un titre relativement court pour des raisons d'ergonomie et de lisibilité.<br>
+                        <br>
+                        Si vous souhaitez plutôt utiliser une image en tête de votre menu, c'est également ici que vous pourrez la choisir. Contrairement aux champs d'envoi de fichier des autres panneaux, celui-là ne vous permet d'envoyer qu'une image à la fois.<br>
+                        <br></li>
+                        
+                        <li><strong>L'URL de votre site</strong> est son <em>adresse internet.</em> Par exemple : http://collectif8h30.fr est l'adresse URL du site du collectif 8h30, un formidable collectif nantais.<br>
+                        Pour des raisons purement pratiques, il vous est possible de la modifier, <strong>mais nous ne le recommandons pas !</strong><br>
+                        Si votre site fonctionne, cette information ne devrait pas être modifiée.
+                        </li>
+
+                        <li>
+                        <strong>Les balises meta</strong> sont un outil très puissant pour le référencement de votre site, mais qui nécessiterait un brin d'explication techniques que nous souhaitons vous éviter.<br>
+                        Si vous savez comment fonctionnent les balises meta, vous pourrez en ajouter ici, en spécifiant leur <em>name</em> et leur <em>content.</em> Si vous ne savez pas comment elles marchent, laissez nous nous en occuper pour vous !<br>
+                        D'ailleurs, le webmaster est joignable à l'adresse suivante : <strong>yapo(at)collectif8h30.fr</strong>
+                        </li>
+                    </ul>
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_prjts')">Modifier les coordonnées de votre site</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_prjts')">Aller à mon site</button>
             </div>
         </div>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(2)">Modifier vos informations contact</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(2)">Mes contacts</button>
             
             <div id="explics_2" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    Cette section est très simple à comprendre : vous pouvez, ici, modifier vos informations de contact.
+                    <ul>
+                        <li><strong>Votre adresse</strong> physique, cette fois</li>
+                        <li><strong>Votre mail :</strong> pour des raisons de sécurité, votre adresse mail n'est pas cliquable ou écrit directement en tant que lien.<br> Concrètement, si vous écrivez yapo@collectif8h30.fr (ce qui est l'adresse où joindre le webmaster en cas de problème, l'avions-nous précisé ?), cela deviendra yapo(at)collectif8h30.fr</li>
+                        <li><strong>Vos réseaux :</strong> Sous forme de liste, vous pouvez y entrer vos adresses de réseaux sociaux comme votre instagram, facebook, malt, etc.</li>
+                    </ul>
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_contact')">Modifier vos informations contact</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_contact')">Aller à mes contacts</button>
             </div>
         </div>
 
         <div class="border-bottom">
-            <button type="button" class="btn btn-lg" v-on:click="switchVisi(3)">Modifier vos informations administrateurs</button>
+            <button type="button" class="btn btn-lg" v-on:click="switchVisi(3)">Mes identifiants</button>
             
             <div id="explics_3" class="mb-sm-3" style="display:none">
                 <p>
-                    <em>Explications en attente...</em>
+                    Ce panneau est là pour vous permettre de changer votre login administrateur, ou de réinitialiser votre mot de passe.<br>
+                    Les mêmes règles que lors de l'installation de votre site s'appliuent pour le mot de passe : il doit contenir <strong>au moins un caractère spécial, un chiffre et une majuscule</strong>
                 </p>
-                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_admin')">Modifier vos informations administrateurs</button>
+                <button type="button" class="btn btn-secondary" v-on:click="changeOnglet('onglet_admin')">Aller à mes identifiants</button>
             </div>
         </div>
     </div> `
@@ -1181,13 +1293,28 @@ var interfaceAdmin = new Vue({
             </div>
 
             <div class="col-lg-9 mb-5" id="component_col">
-                <keep-alive>
+                <keep-alive v-if="ongletActuel">
                     <component v-bind:is="ongletActuel" 
                     v-on:changeOnglet="chgOngletActuel($event)" 
                     v-on:emitRefresh="whatRefresh($event)" 
                     v-bind:_refresh="refresh"
                     class="px-md-3"></component>
                 </keep-alive>
+
+                <div v-else>
+                    <h1 class="display-1" style="font-size:2.3em;">Bienvenue !</h1>
+                    <p class="mb-2">
+                        Vous vous trouvez actuellement à l'accueil de votre <strong>espace administrateur.</strong><br> 
+                        C'est ici que vous gérez le contenu de votre site web.
+                    </p>
+                    <p class="mb-2">
+                        Utilisez le menu à gauche pour accéder aux différentes rubriques.<br>
+                        Les onglets bleus "Contenu" et "Paramètres" contiennent des informations relatives au fonctionnement des rubriques.
+                    </p>
+                    <p class="mb-2">
+                        En cas de problème, contacter le webmaster à l'adresse suivante : yapo(at)collectif8h30.fr
+                    </p>
+                </div>
             </div>
         </div>
     </div> `

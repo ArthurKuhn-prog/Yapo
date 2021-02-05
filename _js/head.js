@@ -1,5 +1,5 @@
 if(sessionStorage.getItem('homeURL') === null){
-    homeURL = window.location.protocol + '//' + window.location.host;
+    homeURL = 'http://localhost/yapo';
     console.log(homeURL);
 } else {
     homeURL = sessionStorage.getItem('homeURL');
@@ -62,7 +62,7 @@ var pages = new Vue({
     el:'#liste_pages',
     data: function(){
         return{
-            listeCats: '',
+            listeCats: [],
             verifHome: false,
             homeURL: '',
             showActus: false,
@@ -80,10 +80,23 @@ var pages = new Vue({
                 }
             });
         },
+        isThumbnail:function(cat){
+            ajaxPost(homeURL+'/_php/is_thumbnail.php', 'cat='+cat.id+'&cle=thumbs', (isThumb) => {
+                if(isThumb !== "false"){
+                    cat.thumb = isThumb;
+                } else {
+                    cat.thumb = false;
+                }
+                this.listeCats.push(cat);
+            }, false);
+        },
         recupCats: function(){
             ajaxGet(this.homeURL+'/_php/liste_cats.php', (retour) => {
                 if(retour){
-                    this.listeCats = JSON.parse(retour);
+                    retour = JSON.parse(retour);
+                    for(var i = 0; i < retour.length; i++){
+                        this.isThumbnail(retour[i]);
+                    }
                 }
             });
         },

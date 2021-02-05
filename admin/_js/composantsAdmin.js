@@ -395,7 +395,9 @@ var upl_fchs = {
                 formData.set('fichier', this.$refs.file.files[i]);
 
                 ajaxPost('_php/upl_fchs.php', formData, (retour) => {
-                    if(retour){
+                    
+                    
+                    if(retour === "ok"){
                         this.images.push({
                             'name':this.$refs.file.files[i].name, 
                             'size': this.returnFileSize(this.$refs.file.files[i].size), 'ext':this.$refs.file.files[0].name.slice((this.$refs.file.files[0].name.lastIndexOf(".") - 1 >>> 0) + 2),

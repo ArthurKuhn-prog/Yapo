@@ -26,9 +26,11 @@ var body = new Vue({
                 if(isThumb !== "false"){
                     page.thumb = isThumb;
                     this.listePages.push(page);
+                    console.log("y a une image");
                 } else {
                     page.thumb = false;
                     this.listePages.push(page);
+                    console.log("y a pas image");
                 }
             }, false);
         },

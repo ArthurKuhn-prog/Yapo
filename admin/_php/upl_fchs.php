@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     $tmp = $images['tmp_name'];
                     if($prjt_cle != "params"){
                         if(move_uploaded_file($tmp, $pathTo.$images['name'])){
-                            echo true;
+                            echo "ok";
                         } else {
                             echo "Erreur de chemin pour l'upload";
                         }

@@ -21,3 +21,5 @@ if(isset($_POST['cat'])){ //On a bien une catégorie
 }
 
 ?>
+
+
