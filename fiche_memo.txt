@@ -1,1 +1,9 @@
 GitHub repo: https://github.com/ArthurKuhn-prog/Yapo
+
+- Résoudre problème par partie admin: ajouter propriété thumb dès upload d'image
+
+- Penser à bien faire en sorte de falser tous les thumbs quand on en choisit une
+
+- n'avoir plus qu'à récupérer le contenu et se comporter en fonction, côté front
+
+- garder l'idée d'une fonction globale pour récupérer les pagelists
