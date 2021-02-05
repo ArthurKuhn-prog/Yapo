@@ -5,7 +5,7 @@ if(isset($_POST['cat'])){ //On a bien une catégorie
     $cat = strip_tags($_POST['cat']); //Sécurité, pas de html
     
     //On doit récupérer la liste des projets qui ont été créés dans cette catégorie
-    $requete = $bdd->query('SELECT titre, prjt_cle FROM `cat_'.$cat.'` ORDER BY id DESC');
+    $requete = $bdd->query('SELECT id,titre, prjt_cle FROM `cat_'.$cat.'` ORDER BY id DESC');
     if($requete){ //Si la requete n'a pas renvoyé un false
         $liste_prjts = $requete->fetchAll();
 

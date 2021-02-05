@@ -1,10 +1,32 @@
+function getPageList(retour, id){
+    ajaxPost(homeURL+'/_php/liste_prjts.php', 'cat='+this.id, getPageList, this.id, false);
+        console.log(id);
+
+        retour = JSON.parse(retour);
+        retour.splice(-1,1);
+        
+        return retour.splice(-1,1);
+
+        /*for(var i = 0; i < this.listePages.length; i ++){
+            this.isThumbnail(this.listePages[i], id);
+        }
+        console.log(this.listePages);*/
+}
+
 var body = new Vue({
     el: '#liste_pages_body',
     data: function(){
         return{
-            listePages: [],
             homeURL:homeURL,
             titreCat: document.getElementById('cat').textContent,
+            id: false,
+        }
+    },
+    computed:{
+        pageList() {
+            if(this.id){
+                return getPageList(this.id);
+            }
         }
     },
     components:{
@@ -25,33 +47,20 @@ var body = new Vue({
             ajaxPost(homeURL+'/_php/is_thumbnail.php', 'cat='+id+'&cle='+page.prjt_cle, (isThumb) => {
                 if(isThumb !== "false"){
                     page.thumb = isThumb;
-                    this.listePages.push(page);
-                    console.log("y a une image");
                 } else {
                     page.thumb = false;
-                    this.listePages.push(page);
-                    console.log("y a pas image");
                 }
             }, false);
         },
         recup:function(){
-            var id = document.getElementById('id').textContent;
-            ajaxPost(homeURL+'/_php/liste_prjts.php', 'cat='+id, (retour) => {
-                retour = JSON.parse(retour);
-
-                retour.splice(-1,1);
-                
-                for(var i = 0; i < retour.length; i ++){
-                    this.isThumbnail(retour[i], id);
-                }
-            }, false);
+            this.id = document.getElementById('id').textContent;
         },
     },
     template:`
     <div class="col-lg-9 mb-5 page_list body">
         <h1 class="display-1 mb-2">{{titreCat}}</h1>
         
-        <div v-for="(item,index) in listePages"
+        <!--><div v-for="(item,index) in pageList"
         class="pb-2 mb-3">
             <a :href="item.prjt_cle+'/'+item.prjt_cle+'.php'" class="page_thumb mt-2">
                 <div v-if="item.thumb" class="page_thumb_img">
@@ -61,6 +70,8 @@ var body = new Vue({
 
                 {{item.titre}}
             </a>
-        </div>
+        </div><!-->
+
+        <p>{{ pageList }}</p>
     </div> `
 });

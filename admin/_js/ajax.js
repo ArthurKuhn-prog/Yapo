@@ -1,11 +1,11 @@
-function ajaxGet(url, callback){ // On envoie en paramètre l'url a atteindre, et une fonction "callback" qu'on va appeler en retour
+function ajaxGet(url, callback, ifArg){ // On envoie en paramètre l'url a atteindre, et une fonction "callback" qu'on va appeler en retour
     var req = new XMLHttpRequest();
     req.open("GET", url);
     
     req.addEventListener("load", function(){
         if(req.status >= 200 || req.status < 400){
             //On appelle la fonction callback en lui passant le résultat si ça a marché
-            callback(req.responseText);
+            callback(req.responseText, ifArg);
         } else{
             console.error(req.status + " " + req.statusText + " " + url);
         }
@@ -20,7 +20,7 @@ function ajaxGet(url, callback){ // On envoie en paramètre l'url a atteindre, e
     
 }
 
-function ajaxPost(url, data, callback, isData){ //Execute un appel AJAX POST. Prend en parametre: l'url ou envoyer, les données à envoyer, et une fonction callback à appeler
+function ajaxPost(url, data, callback, ifArg, isData){ //Execute un appel AJAX POST. Prend en parametre: l'url ou envoyer, les données à envoyer, et une fonction callback à appeler
     var req = new XMLHttpRequest(); //On créé un objet-requête
     
     req.open("post", url, true); //Qui cette fois contient une requête POST, mais toujours asynchrone
@@ -28,7 +28,7 @@ function ajaxPost(url, data, callback, isData){ //Execute un appel AJAX POST. Pr
     req.addEventListener("load", function(){
         if(req.status >= 200 || req.status < 400){ //Si la requête atteint le serveur et s'éxécute
             //Appelle la fonction callback en lui passant la réponse de la requête
-            callback(req.responseText);
+            callback(req.responseText, ifArg);
         }
         else{ //Si elle l'atteint mais n'arrive pas à s'éxécuter
             console.error(req.status + " " + req.statusText + " " + url);
