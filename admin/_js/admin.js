@@ -92,18 +92,27 @@ var onglet_prjts = {
                 'modif': false,
             });
             
-            this.savePrjt(0, this.catActuelle.id, nvTitre, nvelleCle, nvContenu, false);
+            this.savePrjt(0, this.catActuelle.id, nvTitre, nvelleCle, nvContenu, false, false);
             
             this.$nextTick(function(){
                 document.getElementById("prjt_"+nvelleCle).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
             });
         },
-        savePrjt: function(index, cat, titre, cle, contenu, display){
+        savePrjt: function(index, cat, titre, cle, contenu, thumb, display){
             var formData = new FormData();
             formData.set('prjt_cat', 'cat_'+cat);
             formData.set('prjt_titre', titre);
             formData.set('prjt_cle', cle);
             formData.set('prjt_contenu', contenu);
+            
+            if(!thumb){
+                console.log("no thumb");
+                formData.set('prjt_thumb', false);
+            } else {
+                console.log("thumb");
+                formData.set('prjt_thumb', thumb);
+            }
+            
 
             ajaxPost("_php/save_prjt.php", formData, (retour) => {
                 console.log(retour);

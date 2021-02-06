@@ -443,9 +443,11 @@ var upl_fchs = {
                         this.images[i].thumbnail = false;
                     }
                 }
-                this.images[index].thumbnail = true;
                 
-                this.$emit('nvlleMiniat');
+                this.images[index].thumbnail = this.images[index].url;
+                
+                
+                this.$emit('nvlleMiniat', this.images[index].thumbnail);
             }, true);
         },
         supprMiniat: function(index, cle, cat){
@@ -911,16 +913,22 @@ var formPrjt = {
         },
     },
     methods:{
-        isThumbnail: function(){
-            this.savePrjt();
+        isThumbnail: function(e){
+            console.log('thumbail depuis le parent: '+e);
+            this.savePrjt(e, false);
             this.$parent.isThumbnail(this.cat, this.cle);
         },
         modifContenu:function(input, index){
             this.listeChps[index].contenu = input;
             this.$parent.listePrjts[this.index].modif = true;
         },
-        savePrjt:function(display){
-            this.$parent.savePrjt(this.index, this.cat, this.titre, this.cle, JSON.stringify(this.listeChps), display);
+        savePrjt:function(thumb, display){
+            if(thumb === undefined){
+                this.$parent.savePrjt(this.index, this.cat, this.titre, this.cle, JSON.stringify(this.listeChps), false, display);
+            } else {
+                this.$parent.savePrjt(this.index, this.cat, this.titre, this.cle, JSON.stringify(this.listeChps), thumb, display);
+            }
+            
         },
         addChp: function(nvChp){
             this.listeChps.push({'titre':nvChp.titre, 'type':nvChp.type, 'contenu':nvChp.contenu});
@@ -946,13 +954,13 @@ var formPrjt = {
             :chp_contenu="item.contenu" 
             v-on:modif="modifContenu($event, index)"
             v-on:upload="savePrjt(false)"
-            v-on:nvlleMiniat="isThumbnail()"></component>
+            v-on:nvlleMiniat="isThumbnail"></component>
         </div>
 
         <ajtChp v-on:addChp="addChp($event)"></ajtChp>
 
         <div class="form-group mt-3">
-            <button type="button" class="btn btn-primary btn-lg" v-on:click="savePrjt(true)">Enregistrer les modifications</button>
+            <button type="button" class="btn btn-primary btn-lg" v-on:click="savePrjt(undefined, true)">Enregistrer les modifications</button>
         </div>
     </div> `
 };

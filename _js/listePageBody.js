@@ -40,10 +40,15 @@ var body = new Vue({
                 retour = JSON.parse(retour);
 
                 retour.splice(-1,1);
+                console.log(retour);
                 
-                for(var i = 0; i < retour.length; i ++){
-                    this.isThumbnail(retour[i], id);
+                for(var i = 0; i < retour.length; i++){
+                    if(retour[i].thumb === "false"){
+                        retour[i].thumb = false;
+                    }
                 }
+                
+                this.listePages = retour;
             }, false);
         },
     },

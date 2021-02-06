@@ -16,6 +16,7 @@ if(isset($_POST['prjt_cat']) && gettype($_POST['prjt_cat']) == "string"){
             $titre = strip_tags($_POST['prjt_titre']);
             $cle = strip_tags($_POST['prjt_cle']);
             $contenu = $_POST['prjt_contenu'];
+            $thumb = strip_tags($_POST['prjt_thumb']);
             
             //On vérifie u'il n'existe pas déjà un projet avec cette clé
             $verif = $bdd->prepare('SELECT * FROM `'.$cat.'` WHERE prjt_cle = "'.$cle.'" ');
@@ -25,18 +26,20 @@ if(isset($_POST['prjt_cat']) && gettype($_POST['prjt_cat']) == "string"){
             
             if($foo){
                 echo "ok";
-                $requete = $bdd->prepare('UPDATE `'.$cat.'` SET contenu_json = :contenu , titre = :titre , date = :date WHERE prjt_cle = :cle');
+                $requete = $bdd->prepare('UPDATE `'.$cat.'` SET contenu_json = :contenu , thumb = :thumb, titre = :titre , date = :date WHERE prjt_cle = :cle');
                 $requete -> execute(array(
                 'contenu' => $contenu,
+                'thumb' => $thumb,
                 'titre' => $titre,
                 'date' => date("Y.m.d"),
                 'cle' => $cle ));
             } else {
                 echo "pas ok";
-                $requete = $bdd->prepare('INSERT INTO `'.$cat.'`(titre, contenu_json, date, prjt_cle) VALUES (:titre, :contenu, :date, :cle)');
+                $requete = $bdd->prepare('INSERT INTO `'.$cat.'`(titre, contenu_json, date, prjt_cle) VALUES (:titre, :contenu, :thumb, :date, :cle)');
                 $requete -> execute(array(
                 'titre' => $titre,
                 'contenu' => $contenu,
+                'thumb' => $thumb,
                 'date' => date("Y.m.d"),
                 'cle' => $cle ));
                 
