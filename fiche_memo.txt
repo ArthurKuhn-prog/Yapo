@@ -1,9 +1,11 @@
 GitHub repo: https://github.com/ArthurKuhn-prog/Yapo
 
-- Résoudre problème par partie admin: ajouter propriété thumb dès upload d'image
+(branche hotfix_reworkAjaxCalls: 
+- garder l'idée d'une fonction globale pour récupérer les pagelists)
 
-- Penser à bien faire en sorte de falser tous les thumbs quand on en choisit une
-
-- n'avoir plus qu'à récupérer le contenu et se comporter en fonction, côté front
-
-- garder l'idée d'une fonction globale pour récupérer les pagelists
+- Bouton enregistrer projet supprime miniature
+	- Fonction savePrjt du composant FormPrjt (pour avoir accès au projet concerné) gère les différents cas de figure 
+	liste des cas: 
+		- undefined -> bouton enregistrer (ou ajout de champ), on ne sait pas, on y touche pas
+		- false, on supprime la miniature, on enregistre false
+		- texte, on créé la miniature, on l'enregistre
